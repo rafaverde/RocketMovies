@@ -1,10 +1,11 @@
 import { Container } from "./styles"
 
+import { Header } from "../../components/Header"
+
 export function Preview() {
   return (
     <Container>
-      <h1>Hello, world!</h1>
-      <p>RocketMovies Application</p>
+      <Header />
     </Container>
   )
 }
