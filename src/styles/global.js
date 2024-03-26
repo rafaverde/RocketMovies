@@ -40,4 +40,16 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6, button {
     font-family: ${({ theme }) => theme.FONTS.PRIMARY_FONT};
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  a, button {
+    cursor: pointer;
+  }
+
+  button {
+    border: none;
+  }
 `
