@@ -9,6 +9,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 50px;
+  grid-area: header;
 
   border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
 `
@@ -36,14 +37,6 @@ export const Profile = styled.div`
   align-items: center;
   justify-content: end;
 
-  > img {
-    width: 64px;
-    height: 64px;
-
-    border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
-    border-radius: 100px;
-  }
-
   > div {
     display: flex;
     flex-direction: column;
@@ -55,10 +48,20 @@ export const Profile = styled.div`
     line-height: 1;
 
     strong {
+      text-wrap: nowrap;
+      color: ${({ theme }) => theme.COLORS.WHITE};
     }
 
     span {
       color: ${({ theme }) => theme.COLORS.GRAY_300};
     }
+  }
+
+  img {
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
+    border-radius: 100px;
   }
 `

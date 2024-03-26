@@ -1,6 +1,6 @@
 export default {
   COLORS: {
-    PRIMARY_COLOR: "#FF859B",
+    PRIMARY_COLOR: "#0CF2B1",
     WHITE: "#ffffff",
     BACKGROUND_900: "#1C1B1E",
     BACKGROUND_800: "#262529",
