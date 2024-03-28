@@ -33,8 +33,9 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.COLORS.WHITE};
   }
 
-  input, textarea {
+  input, textarea, button {
     font-family: ${({ theme }) => theme.FONTS.SECONDARY_FONT};
+    font-size: 1.6rem;
   }
 
   h1, h2, h3, h4, h5, h6, button {
