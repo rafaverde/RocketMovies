@@ -7,7 +7,7 @@ import { Input } from "../Input"
 export function Header() {
   return (
     <Container>
-      <Brand>
+      <Brand to="/">
         <FiFilm />
         <h1>RocketMovies</h1>
       </Brand>

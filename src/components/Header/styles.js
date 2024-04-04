@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export const Container = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ export const Container = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
 `
 
-export const Brand = styled.div`
+export const Brand = styled(Link)`
   display: flex;
   align-items: baseline;
   gap: 10px;
