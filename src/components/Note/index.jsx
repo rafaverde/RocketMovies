@@ -4,7 +4,7 @@ import { Tag } from "../Tag"
 
 export function Note({ data, ...rest }) {
   return (
-    <Container {...rest}>
+    <Container to="/preview" {...rest}>
       <NoteHeader>
         <FiFilm />
         <h1>{data.title}</h1>

@@ -12,7 +12,9 @@ export function Preview() {
       <Header />
       <main>
         <Content>
-          <ButtonText title="Voltar" $isactive icon={FiArrowLeftCircle} />
+          <Link to="/">
+            <ButtonText title="Voltar" $isactive icon={FiArrowLeftCircle} />
+          </Link>
           <div className="movie-title">
             <h2>Interstellar</h2>
             <FiStar />

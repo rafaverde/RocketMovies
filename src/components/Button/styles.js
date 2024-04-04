@@ -7,8 +7,12 @@ export const Container = styled.button`
   gap: 8px;
 
   width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.PRIMARY_COLOR};
-  color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+  background-color: ${({ theme, $isdark }) =>
+    $isdark === true
+      ? theme.COLORS.BACKGROUND_1000
+      : theme.COLORS.PRIMARY_COLOR};
+  color: ${({ theme, $isdark }) =>
+    $isdark === true ? theme.COLORS.RED : theme.COLORS.BACKGROUND_800};
 
   font-family: ${({ theme }) => theme.FONTS.SECONDARY_FONT};
 
@@ -21,5 +25,9 @@ export const Container = styled.button`
 
   &:disabled {
     opacity: 0.5;
+  }
+
+  &:hover {
+    opacity: 0.85;
   }
 `
