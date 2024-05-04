@@ -11,4 +11,8 @@ export const Container = styled.button`
 
   border: none;
   font-size: 16px;
+
+  &:hover {
+    opacity: 0.85;
+  }
 `
