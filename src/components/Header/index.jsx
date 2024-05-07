@@ -1,13 +1,20 @@
 import { FiSearch, FiFilm } from "react-icons/fi"
 import { Link } from "react-router-dom"
+import { api } from "../../services/api"
 import { useAuth } from "../../hooks/auth"
+
+import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
 import { ButtonText } from "../ButtonText"
 
 import { Container, Search, Profile, Brand } from "./styles"
 import { Input } from "../Input"
 
 export function Header() {
-  const { signOut } = useAuth()
+  const { signOut, user } = useAuth()
+
+  const avatarURL = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder
 
   return (
     <Container>
@@ -26,7 +33,7 @@ export function Header() {
           <ButtonText title="sair" onClick={signOut}></ButtonText>
         </div>
         <Link to="/profile">
-          <img src="https://www.github.com/rafaverde.png" alt="User avatar" />
+          <img src={avatarURL} alt={user.name} />
         </Link>
       </Profile>
     </Container>
