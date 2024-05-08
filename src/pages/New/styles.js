@@ -58,6 +58,8 @@ export const Content = styled.div`
         display: flex;
         align-items: center;
         gap: 40px;
+        max-width: 40%;
+        margin: 0 auto;
 
         button {
           font-family: ${({ theme }) => theme.FONTS.PRIMARY_FONT};

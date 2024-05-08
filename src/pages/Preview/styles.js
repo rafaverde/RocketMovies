@@ -41,6 +41,21 @@ export const Content = styled.div`
     font-size: 36px;
     margin-right: 16px;
   }
+
+  > .buttons {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    margin-top: 40px;
+    padding: 40px 0;
+
+    border-top: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
+
+    button {
+      font-family: ${({ theme }) => theme.FONTS.PRIMARY_FONT};
+    }
+  }
 `
 
 export const Meta = styled.div`

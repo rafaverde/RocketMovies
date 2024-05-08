@@ -1,5 +1,5 @@
 import { useAuth } from "../../hooks/auth"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { api } from "../../services/api"
 
 import avatarPlaceHolder from "../../assets/avatar_placeholder.svg"
@@ -26,13 +26,17 @@ export function Profile() {
   const [avatarFile, setAvatarFile] = useState(null)
 
   async function handleUpdate() {
+    if (oldPassword && !newPassword) {
+      return alert("É necessário digitar a nova senha!")
+    }
+
     const updated = {
       name,
       email,
       old_password: oldPassword,
       password: newPassword,
     }
-
+    
     const userUpdated = Object.assign(user, updated)
 
     await updateProfile({ user: userUpdated, avatarFile })

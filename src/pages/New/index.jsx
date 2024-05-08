@@ -1,7 +1,9 @@
-import { FiArrowLeftCircle } from "react-icons/fi"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { api } from "../../services/api"
 
 import { Container, Content } from "./styles"
+import { FiArrowLeftCircle } from "react-icons/fi"
 
 import { Header } from "../../components/Header"
 import { ButtonText } from "../../components/ButtonText"
@@ -11,6 +13,45 @@ import { Textarea } from "../../components/Textarea"
 import { NoteItem } from "../../components/NoteItem"
 
 export function New() {
+  const [tags, setTags] = useState([])
+  const [newTag, setNewTag] = useState("")
+  const [title, setTitle] = useState("")
+  const [rating, setRating] = useState(5)
+  const [description, setDescription] = useState("")
+
+  const navigate = useNavigate()
+
+  function handleAddTag() {
+    if (!newTag) {
+      return alert("Genêro do filme não pode ser vazio!")
+    }
+
+    setTags((prevState) => [...prevState, newTag])
+    setNewTag("")
+  }
+
+  function handleRemoveTag(deleted) {
+    setTags((prevState) => prevState.filter((tag, index) => index !== deleted))
+  }
+
+  async function handleNewNote() {
+    if (!title || !rating) {
+      return alert("É preciso digitar o nome do filme e sua nota!")
+    }
+
+    if (newTag) {
+      return alert(
+        "Você deixou uma tag digitada e não adicionou. Clique em (+)"
+      )
+    }
+
+    const movieNote = { title, rating, description, tags }
+    await api.post("/notes", movieNote)
+
+    alert("Filme cadastrado com sucesso!")
+    navigate("/")
+  }
+
   return (
     <Container>
       <Header />
@@ -25,22 +66,43 @@ export function New() {
           </header>
 
           <div>
-            <Input placeholder="Título" />
-            <Input placeholder="Sua nota (de 0 a 5)" />
+            <Input
+              placeholder="Título"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <Input
+              placeholder="Sua nota (de 0 a 5)"
+              onChange={(e) => setRating(e.target.value)}
+            />
           </div>
-          <Textarea placeholder="Observação" />
+          <Textarea
+            placeholder="Descrição"
+            onChange={(e) => setDescription(e.target.value)}
+          />
 
           <footer>
-            <h3>Marcadores</h3>
+            <h3>Gêneros</h3>
             <div className="tags">
-              <NoteItem value="Sci-Fi"></NoteItem>
-              <NoteItem value="Drama"></NoteItem>
+              {tags.map((tag, index) => (
+                <NoteItem
+                  key={String(index)}
+                  value={tag}
+                  onClick={() => {
+                    handleRemoveTag(index)
+                  }}
+                ></NoteItem>
+              ))}
 
-              <NoteItem isNew placeholder="Nova Tag"></NoteItem>
+              <NoteItem
+                isNew
+                placeholder="Nova Tag"
+                value={newTag}
+                onChange={(e) => setNewTag(e.target.value)}
+                onClick={handleAddTag}
+              ></NoteItem>
             </div>
             <div className="buttons">
-              <Button title="Excluir Filme" $isdark />
-              <Button title="Salvar Alterações" />
+              <Button title="Salvar Alterações" onClick={handleNewNote} />
             </div>
           </footer>
         </form>

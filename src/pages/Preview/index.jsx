@@ -1,10 +1,17 @@
 import { Container, Content, Meta, Sinopsys } from "./styles"
-import { FiArrowLeftCircle, FiStar, FiClock } from "react-icons/fi"
+import {
+  FiArrowLeftCircle,
+  FiStar,
+  FiClock,
+  FiTrash,
+  FiPlusCircle,
+} from "react-icons/fi"
 import { Link } from "react-router-dom"
 
 import { Header } from "../../components/Header"
 import { ButtonText } from "../../components/ButtonText"
 import { Tag } from "../../components/Tag"
+import { Button } from "../../components/Button"
 
 export function Preview() {
   return (
@@ -71,6 +78,10 @@ export function Preview() {
               Endurance, Cooper e Amelia descobrem que 23 anos se passaram.
             </p>
           </Sinopsys>
+          <div className="buttons">
+            <Button title="Excluir Filme" $isdark icon={FiTrash} />
+            <Button title="Adicionar Novo Filme" icon={FiPlusCircle} />
+          </div>
         </Content>
       </main>
     </Container>
