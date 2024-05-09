@@ -1,16 +1,18 @@
 import { useAuth } from "../../hooks/auth"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { api } from "../../services/api"
 
 import avatarPlaceHolder from "../../assets/avatar_placeholder.svg"
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi"
 import { Container, Form, Avatar } from "./style"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 
 export function Profile() {
+  const navigate = useNavigate()
+
   const { user, updateProfile } = useAuth()
 
   const [name, setName] = useState(user.name)
@@ -25,6 +27,10 @@ export function Profile() {
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
 
+  function handleBackButton() {
+    navigate(-1)
+  }
+
   async function handleUpdate() {
     if (oldPassword && !newPassword) {
       return alert("É necessário digitar a nova senha!")
@@ -36,7 +42,7 @@ export function Profile() {
       old_password: oldPassword,
       password: newPassword,
     }
-    
+
     const userUpdated = Object.assign(user, updated)
 
     await updateProfile({ user: userUpdated, avatarFile })
@@ -55,9 +61,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button onClick={handleBackButton}>
           <FiArrowLeft />
-        </Link>
+        </button>
       </header>
 
       <Form>

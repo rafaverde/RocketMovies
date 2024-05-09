@@ -57,11 +57,13 @@ export const Content = styled.div`
       > .buttons {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: 40px;
-        max-width: 40%;
+        max-width: 100%;
         margin: 0 auto;
 
         button {
+          max-width: 40%;
           font-family: ${({ theme }) => theme.FONTS.PRIMARY_FONT};
         }
       }

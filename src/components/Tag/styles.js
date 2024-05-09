@@ -11,4 +11,6 @@ export const Container = styled.span`
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
   color: ${({ theme }) => theme.COLORS.GREY_300};
+
+  text-transform: lowercase;
 `

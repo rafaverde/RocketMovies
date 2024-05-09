@@ -14,6 +14,16 @@ export const Container = styled.div`
 
     padding: 0 124px;
 
+    button {
+      background: none;
+
+      svg {
+        &:hover {
+          color: ${({ theme }) => theme.COLORS.PRIMARY_COLOR};
+        }
+      }
+    }
+
     svg {
       color: ${({ theme }) => theme.COLORS.GRAY_100};
       font-size: 24px;

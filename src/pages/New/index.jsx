@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { api } from "../../services/api"
 
 import { Container, Content } from "./styles"
@@ -34,6 +34,10 @@ export function New() {
     setTags((prevState) => prevState.filter((tag, index) => index !== deleted))
   }
 
+  function handleBackButton() {
+    navigate(-1)
+  }
+
   async function handleNewNote() {
     if (!title || !rating) {
       return alert("É preciso digitar o nome do filme e sua nota!")
@@ -59,9 +63,12 @@ export function New() {
       <Content>
         <form>
           <header>
-            <Link to="/">
-              <ButtonText title="Voltar" $isactive icon={FiArrowLeftCircle} />
-            </Link>
+            <ButtonText
+              title="Voltar"
+              $isactive
+              icon={FiArrowLeftCircle}
+              onClick={handleBackButton}
+            />
             <h2>Novo Filme</h2>
           </header>
 

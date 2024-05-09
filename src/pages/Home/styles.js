@@ -24,5 +24,10 @@ export const Content = styled.div`
   > header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    button {
+      margin-top: 0;
+    }
   }
 `

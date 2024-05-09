@@ -6,6 +6,8 @@ export const AuthContext = createContext({})
 function AuthProvider({ children }) {
   const [data, setData] = useState({})
 
+  const [search, setSearch] = useState("")
+
   async function signIn({ email, password }) {
     try {
       const response = await api.post("/sessions", { email, password })
@@ -76,7 +78,14 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signOut, updateProfile, user: data.user }}
+      value={{
+        signIn,
+        signOut,
+        updateProfile,
+        user: data.user,
+        search,
+        setSearch,
+      }}
     >
       {children}
     </AuthContext.Provider>
