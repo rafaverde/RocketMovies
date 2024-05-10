@@ -5,7 +5,6 @@ import { api } from "../../services/api"
 import { Container, Content, Meta, Sinopsys } from "./styles"
 import {
   FiArrowLeftCircle,
-  FiStar,
   FiClock,
   FiTrash,
   FiPlusCircle,
@@ -15,6 +14,7 @@ import { Header } from "../../components/Header"
 import { ButtonText } from "../../components/ButtonText"
 import { Tag } from "../../components/Tag"
 import { Button } from "../../components/Button"
+import { RatingShow } from "../../components/RatingShow"
 
 export function Preview() {
   const [data, setData] = useState(null)
@@ -63,12 +63,7 @@ export function Preview() {
 
             <div className="movie-title">
               <h2>{data.title}</h2>
-              <FiStar />
-              <FiStar />
-              <FiStar />
-              <FiStar />
-              <FiStar />
-              {data.rating}
+              <RatingShow data={data.rating} />
             </div>
 
             <Meta>

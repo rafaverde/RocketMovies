@@ -1,5 +1,6 @@
 import { FiFilm } from "react-icons/fi"
-import { FaStar } from "react-icons/fa"
+// import { FaStar } from "react-icons/fa"
+import { RatingShow } from "../RatingShow"
 import { Container, NoteHeader, Sinopsys } from "./styles"
 import { Tag } from "../Tag"
 
@@ -9,13 +10,7 @@ export function Note({ data, ...rest }) {
       <NoteHeader>
         <FiFilm />
         <h1>{data.title}</h1>
-        <div id="stars">
-          {[...Array(data.rating)].map((_, index) => (
-            <label key={index}>
-              <FaStar />
-            </label>
-          ))}
-        </div>
+        <RatingShow data={data.rating} />
       </NoteHeader>
       <Sinopsys>
         <p>{data.description}</p>
