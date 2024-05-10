@@ -33,6 +33,33 @@ export const Content = styled.div`
       gap: 40px;
     }
 
+    .rating {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .star-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      input {
+        position: absolute;
+        opacity: 0;
+      }
+    }
+
+    .star-enabled {
+      color: ${({ theme }) => theme.COLORS.PRIMARY_COLOR};
+    }
+
+    .star-disabled {
+      color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    }
+
     > footer {
       h3 {
         font-size: 20px;

@@ -10,11 +10,11 @@ export function Note({ data, ...rest }) {
         <FiFilm />
         <h1>{data.title}</h1>
         <div id="stars">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
+          {[...Array(data.rating)].map((_, index) => (
+            <label key={index}>
+              <FaStar />
+            </label>
+          ))}
         </div>
       </NoteHeader>
       <Sinopsys>

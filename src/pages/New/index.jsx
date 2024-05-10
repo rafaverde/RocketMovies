@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { api } from "../../services/api"
 
 import { Container, Content } from "./styles"
+
 import { FiArrowLeftCircle } from "react-icons/fi"
+import { FaStar } from "react-icons/fa"
 
 import { Header } from "../../components/Header"
 import { ButtonText } from "../../components/ButtonText"
@@ -16,7 +18,7 @@ export function New() {
   const [tags, setTags] = useState([])
   const [newTag, setNewTag] = useState("")
   const [title, setTitle] = useState("")
-  const [rating, setRating] = useState(5)
+  const [rating, setRating] = useState(null)
   const [description, setDescription] = useState("")
 
   const navigate = useNavigate()
@@ -77,10 +79,33 @@ export function New() {
               placeholder="Título"
               onChange={(e) => setTitle(e.target.value)}
             />
-            <Input
+            <div className="rating">
+              {[...Array(5)].map((star, index) => {
+                const currentRate = index + 1
+                return (
+                  <label className="star-container" key={index}>
+                    <input
+                      type="radio"
+                      name="rate"
+                      value={currentRate}
+                      onClick={() => setRating(currentRate)}
+                      className="ratingRadio"
+                    />
+
+                    <FaStar
+                      size={40}
+                      className={
+                        currentRate <= rating ? "star-enabled" : "star-disabled"
+                      }
+                    ></FaStar>
+                  </label>
+                )
+              })}
+            </div>
+            {/* <Input
               placeholder="Sua nota (de 0 a 5)"
               onChange={(e) => setRating(e.target.value)}
-            />
+            /> */}
           </div>
           <Textarea
             placeholder="Descrição"
