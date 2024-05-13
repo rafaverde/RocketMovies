@@ -38,6 +38,7 @@ export const Content = styled.div`
       flex-direction: row;
       gap: 10px;
       align-items: center;
+      margin-bottom: 8px;
     }
 
     .star-container {

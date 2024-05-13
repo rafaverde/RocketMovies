@@ -14,8 +14,16 @@ export function SignIn() {
 
   const { signIn } = useAuth()
 
+  const ENTER_KEY = 13
+
   function handleSignIn() {
     signIn({ email, password })
+  }
+
+  function handleKeyPress(event) {
+    if (event.charCode === ENTER_KEY) {
+      handleSignIn()
+    }
   }
 
   return (
@@ -39,6 +47,7 @@ export function SignIn() {
           icon={FiLock}
           type="password"
           onChange={(e) => setPassword(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <Button title="Entrar" onClick={handleSignIn} />
 

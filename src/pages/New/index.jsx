@@ -37,7 +37,16 @@ export function New() {
   }
 
   function handleBackButton() {
-    navigate(-1)
+    if (!title && !description && !rating && tags.length === 0) {
+      navigate(-1)
+    } else {
+      const confirm = window.confirm(
+        "As informações não foram salvas, deseja mesmo sair?"
+      )
+      if (confirm) {
+        navigate(-1)
+      }
+    }
   }
 
   async function handleNewNote() {
@@ -102,10 +111,6 @@ export function New() {
                 )
               })}
             </div>
-            {/* <Input
-              placeholder="Sua nota (de 0 a 5)"
-              onChange={(e) => setRating(e.target.value)}
-            /> */}
           </div>
           <Textarea
             placeholder="Descrição"
