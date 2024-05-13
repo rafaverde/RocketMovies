@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { api } from "../../services/api"
+import { useAuth } from "../../hooks/auth"
 
 import { Container, Content, Meta, Sinopsys } from "./styles"
 import {
@@ -17,8 +18,18 @@ import { Button } from "../../components/Button"
 import { RatingShow } from "../../components/RatingShow"
 
 export function Preview() {
+  const { user } = useAuth()
+
   const [data, setData] = useState(null)
+  const [dataBaseDate, setDataBaseDate] = useState("")
+  const [metaDate, setMetaDate] = useState("")
+  const [metaHour, setMetaHour] = useState("")
+
   const params = useParams()
+
+  const avatarURL = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarPlaceholder
 
   const navigate = useNavigate()
 
@@ -43,10 +54,25 @@ export function Preview() {
     async function fetchMovieNote() {
       const response = await api.get(`/notes/${params.id}`)
       setData(response.data)
+      setDataBaseDate(response.data)
     }
 
     fetchMovieNote()
   }, [])
+
+  useEffect(() => {
+    function formatData() {
+      if (dataBaseDate) {
+        const initialDate = dataBaseDate.created_at
+        const dateSplit = initialDate.split(" ")
+        const finalDate = dateSplit[0].split("-").reverse().join("/")
+        setMetaDate(finalDate)
+        setMetaHour(dateSplit[1])
+      }
+    }
+
+    formatData()
+  }, [dataBaseDate])
 
   return (
     <Container>
@@ -67,13 +93,10 @@ export function Preview() {
             </div>
 
             <Meta>
-              <img
-                src="https://www.github.com/rafaverde.png"
-                alt="User avatar"
-              />
-              <span>Por Rafael Valverde</span>
+              <img src={avatarURL} alt={user.name} />
+              <span>Por {user.name}</span>
               <FiClock />
-              <span>23/05/22 às 08:00</span>
+              <span>{`${metaDate} às ${metaHour}`}</span>
             </Meta>
 
             {data.tags &&
