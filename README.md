@@ -4,9 +4,9 @@
 Projeto desenvolvido no curso Explorer da Rocketseat, de uma aplicação CRUD, com cadastro de usuário, login, cadastros de filmes e manipulação de banco de dados, em uma SPA (Single Page Application) construída com React.js e Node.js.
 </p>
 
-<!-- <p align="center">
-Veja o resultado <a href="" target="_blank">aqui.</a>
-</p> -->
+<p align="center">
+Veja o resultado <a href="https://rocketmoviesrafaverde.netlify.app/" target="_blank">aqui.</a>
+
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
