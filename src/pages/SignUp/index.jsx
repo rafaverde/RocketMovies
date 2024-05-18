@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { api } from "../../services/api"
 
@@ -13,11 +13,14 @@ import {
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
+import { ButtonText } from "../../components/ButtonText"
 
 export function SignUp() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const navigate = useNavigate()
 
   function handleSignUp() {
     if (!name || !email || !password) {
@@ -36,6 +39,10 @@ export function SignUp() {
           alert("Não foi possível cadastrar. Tente novamente mais tarde.")
         }
       })
+  }
+
+  function handleBackToLogin() {
+    navigate("/")
   }
 
   return (
@@ -68,12 +75,12 @@ export function SignUp() {
         />
         <Button title="Cadastrar" onClick={handleSignUp} />
 
-        <Link to="/">
-          <span>
-            <FiArrowLeftCircle />
-            Voltar para o Login
-          </span>
-        </Link>
+        <ButtonText
+          title="Voltar para o Login"
+          icon={FiArrowLeftCircle}
+          onClick={handleBackToLogin}
+          className="back-button"
+        />
       </Form>
 
       <Background />
