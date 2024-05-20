@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   grid-area: content;
   width: 100%;
+  height: calc(100vh - 116px);
   overflow-y: scroll;
 
   padding: 50px 124px;

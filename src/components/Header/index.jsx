@@ -11,7 +11,7 @@ import { Input } from "../Input"
 
 export function Header() {
   const navigate = useNavigate()
-  const { signOut, user } = useAuth()
+  const { signOut, user, setSearch } = useAuth()
 
   const avatarURL = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
@@ -29,7 +29,11 @@ export function Header() {
         <h1>RocketMovies</h1>
       </Brand>
       <Search>
-        <Input icon={FiSearch} placeholder="Pesquisar pelo título" />
+        <Input
+          icon={FiSearch}
+          placeholder="Pesquisar pelo título"
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </Search>
       <Profile to="/profile">
         <div>
